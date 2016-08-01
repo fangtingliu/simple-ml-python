@@ -1,10 +1,12 @@
 # MachineLearning_FLP
 
 MachineLearning_FLP is a Python module that includes common MachineLearning algorithms. Some of them are implemented according to ML books, some of them are from courses I have taken. Some of then include test with data provided by those books and courses. Sources are specified in the detailed described below. Thanks to all those sources.
+Courses:
+- 'Machine Learning by Standford University' courses by Andrew Ng, hosted by Coursera.
+- Artificial Intelligence for Humans Volume 1: Fundamental Algorithms by Jeff Heaton
 
 ## Algorithms
 ### Linear Regression Model
-The implementation of Linear Regression Model is based on the 'Machine Learning by Standford University' courses by Andrew Ng, hosted by Coursera.
 
 ## Usages
 ```bash
@@ -13,7 +15,7 @@ pip install -r requirements.txt
 
 # Linear Regression Model
 
-### One feature example (y = theta0 + theta1 ### x)
+### One feature example (y = theta0 + theta1 * x)
 ```python
 from linearR import linearR
 
