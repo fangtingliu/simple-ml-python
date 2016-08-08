@@ -4,6 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
+import utils as utils
+
 os.path.dirname(os.path.realpath(__file__))
 
 def loadtxt(path):
@@ -109,9 +111,3 @@ def normalEq(X, Y):
 
 def predict(thetas, X):
     return np.dot(np.hstack(([1], X)), thetas)
-
-
-
-
-
-
