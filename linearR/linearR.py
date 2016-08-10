@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-import utils as utils
+from utils import utils;
 
 os.path.dirname(os.path.realpath(__file__))
 
@@ -15,14 +15,6 @@ def loadtxt(path):
     X = data[:, 0:(clen - 1)]
     Y = data[:, (clen - 1):]
     return (X, Y)
-
-def normalizeFeature(X):
-    if len(X[0]) > 1:
-        mean = np.mean(X, axis=0)
-        std = np.std(X, axis=0)
-        return np.divide((X - mean), std), mean, std
-    else:
-        return X, None, None
 
 def plot(X, Y, markerType, title=None, xlabel=None, ylabel=None):
     plt.plot(X, Y, markerType)

@@ -53,3 +53,15 @@ print("Thetas found by gradient descent:", thetas)
 print(linearR.predict(thetas, [1650, 3]))
 ```
 
+# K-Means classification Model (non-supervised)
+### Example
+
+```python
+import numpy as np
+
+from kMeans import kMeans
+
+data = np.loadtxt({path}, delimiter=",", dtype="float")
+kMeans.kMeans(data, {K})
+```
+
