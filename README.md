@@ -54,14 +54,19 @@ print(linearR.predict(thetas, [1650, 3]))
 ```
 
 # K-Means classification Model (non-supervised)
-### Example
+* K is number of clusters
+* Default iteration is 50
 
+### Example
 ```python
 import numpy as np
 
 from kMeans import kMeans
 
 data = np.loadtxt({path}, delimiter=",", dtype="float")
-kMeans.kMeans(data, {K})
+kMeans.kMeans(data, K, iter_num)
+
+kMeans.kMeansImage({path}, K, iter_num)
+#image must locate at the same directory of the file running kmeans
 ```
 
