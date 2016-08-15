@@ -32,6 +32,27 @@ def cost(thetas, X, Y):
     return J
 
 
+def linearR(path, learn_rate, num_iters, **option):
+    X, Y = loadtxt("linearData.txt")
+    thetas, J_hist = gradientDescent(X, Y, learn_rate, num_iters)
+    learning_curve = option.get("learning_curve")
+    if X.shape[1] < 2 and learning_curve:
+        plt.figure()
+        plt.subplot(211)
+        m = len(Y)
+        XwithOnes = np.hstack((np.ones((m, 1)), X))
+        h = np.dot(XwithOnes, thetas)
+        plt.plot(X, Y, 'b+')
+        plt.title("Fitting")
+        plt.plot(X, h, 'r-')
+        plt.subplot(212)
+        plotLearningCurve(num_iters, J_hist)
+    elif X.shape[1] < 2:
+        plotFitLine(X, Y, thetas)
+    elif learning_curve:
+        plotLearningCurve(num_iters, J_hist)
+    return (thetas, J_hist)
+
 def gradientDescent(X, Y, learn_rate, num_iters):
     m = len(Y)
     XwithOnes = np.hstack((np.ones((m, 1)), X))
@@ -41,7 +62,11 @@ def gradientDescent(X, Y, learn_rate, num_iters):
         h = np.dot(XwithOnes, thetas)
         thetas = thetas - learn_rate * np.dot(np.transpose(XwithOnes), (h - Y)) / m
         J_hist[i] = cost(thetas, XwithOnes, Y)
+    print('Fitted thetas: ', thetas)
     return (thetas, J_hist)
+
+def plotLearningCurve(num_iters, JHist):
+    plot(range(num_iters), JHist, "b-", "Cost on Number of Iterations")
 
 # One feature only
 def plotFitLine(X, Y, thetas):
@@ -94,6 +119,9 @@ def costContourPlot(X, Y, thetas=[None, None], s0=-10, e0=10, s1=-10, e1=10):
     plt.show()
     plt.close()
 
+def normalizeFeature(X):
+    return utils.normalizeFeature(X)
+
 # No need to normalize features
 def normalEq(X, Y):
     m = len(Y)
@@ -101,5 +129,5 @@ def normalEq(X, Y):
     Xtr = np.transpose(X)
     return np.dot(np.dot(np.linalg.inv(np.dot(Xtr, X)), Xtr), Y)
 
-def predict(thetas, X):
-    return np.dot(np.hstack(([1], X)), thetas)
+def predict(thetas, X, mean=0, std=1):
+    return np.dot(np.hstack(([1], (X - mean) / std)), thetas)
