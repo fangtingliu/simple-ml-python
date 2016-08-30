@@ -6,8 +6,10 @@ Courses:
 - Artificial Intelligence for Humans Volume 1: Fundamental Algorithms by Jeff Heaton
 
 ## Algorithms
-### Linear Regression Model APIs
+### Common APIs
 * loadtxt(path): load txt documents as input data, it treats the last value of each line as y
+
+### Linear Regression Model APIs
 * plot(X, Y, markerType, title, xlabel, ylabel): only applicable with one feature, i.e. X is a vector
 * gradientDescent(X, Y, learning_rate, interations_number): returns fitted thetas and historial cost values of iterations
 * linearR(path, learning_rate, interations_number, learning_curve=True): returns fitted thetas and historial cost values of iterations. It also plots fitting line if only one feature provided. Learning curve plotting is optional, see example for detials
@@ -18,6 +20,11 @@ The following APIs are only for one feature model:
 * plotFitLine(X, Y, thetas): plot fitting line when only one feature in the model
 * costSurfPlot(X, Y, theta0_start, theta0_end, theta1_start, theta1_end): surf plot on cost function on different thetas. Recommend selecting start and end values based on fitted thetas
 * costContourPlot(X, Y, theta0_start, theta0_end, theta1_start, theta1_end):
+
+
+### Logistic Regression Model APIs
+* plot(X, Y): only applicable with two features.
+
 
 ## Usages
 ```bash
@@ -30,11 +37,11 @@ pip install -r requirements.txt
 ```python
 from linearR import linearR
 
-linearR.linearR("linearData.txt", 0.01, 1500, learning_curve=True)
+linearR.linearR({path}, 0.01, 1500, learning_curve=True)
 ```
 or
 ```python
-X, Y = linearR.loadtxt("linearData.txt")
+X, Y = linearR.loadtxt({path})
 
 thetas, JHist = linearR.gradientDescent(X, Y, 0.01, 1500)
 linearR.plot(range(1500), JHist, "b-", "Cost on Number of Iterations")
@@ -48,7 +55,7 @@ linearR.costContourPlot(X, Y, thetas, -10, 10, -1, 4)
 ```python
 from linearR import linearR
 
-X, Y = linearR.loadtxt("linearMultiData.txt")
+X, Y = linearR.loadtxt({path})
 X, mean, std = linearR.normalizeFeature(X)
 thetas, JHist = linearR.gradientDescent(X, Y, 0.88, 50)
 print("Thetas found by gradient descent:", thetas)
@@ -60,7 +67,7 @@ print(linearR.predict(thetas, ([1650, 3] - mean) / std))
 ```python
 from linearR import linearR
 
-X, Y = linearR.loadtxt("linearMultiData.txt")
+X, Y = linearR.loadtxt({path})
 thetas = linearR.normalEq(X, Y)
 print("Thetas found by gradient descent:", thetas)
 print(linearR.predict(thetas, [1650, 3]))
@@ -76,7 +83,7 @@ import numpy as np
 
 from kMeans import kMeans
 
-data = np.loadtxt({path}, delimiter=",", dtype="float")
+data = kMeans.loadtxt({path})
 kMeans.kMeans(data, K, iter_num)
 
 kMeans.kMeansImage({path}, K, iter_num)

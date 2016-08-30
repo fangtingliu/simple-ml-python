@@ -8,6 +8,9 @@ from scipy import ndimage
 
 from utils import utils;
 
+def loadtxt(X):
+    return utils.loadtxt(X)
+
 def kMeansInitCentroids(X, K):
     toBeShuffledX = copy(X)
     np.random.shuffle(toBeShuffledX)

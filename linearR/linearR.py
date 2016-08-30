@@ -8,13 +8,8 @@ from utils import utils;
 
 os.path.dirname(os.path.realpath(__file__))
 
-def loadtxt(path):
-    data = np.loadtxt(path, delimiter=",", dtype="float")
-    rlen = len(data)
-    clen = len(data[0])
-    X = data[:, 0:(clen - 1)]
-    Y = data[:, (clen - 1):]
-    return (X, Y)
+def loadtxt(X):
+    return utils.loadtxt(X)
 
 def plot(X, Y, markerType, title=None, xlabel=None, ylabel=None):
     plt.plot(X, Y, markerType)
