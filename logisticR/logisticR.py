@@ -13,11 +13,13 @@ def loadtxt(X):
 # two features only
 def plot(X, Y):
     m = Y.shape[0]
-    X0 = np.reshape(X[:, 0], (m, 1))
-    X1 = np.reshape(X[:, 1], (m, 1))
-    fig, ax = plt.subplots()
-    ax.scatter(X0[Y==1], X1[Y==1], marker='+', color='blue')
-    ax.scatter(X0[Y==0], X1[Y==0], marker='o', color='red')
+    pos1 = np.where(Y == 1)
+    pos0 = np.where(Y == 0)
+    plt.scatter(X[pos1, 0], X[pos1, 1], marker='+', c='blue')
+    plt.scatter(X[pos0, 0], X[pos0, 1], marker='o', c='red')
+    plt.xlabel('Feature 1')
+    plt.ylabel('Feature 2')
+    plt.legend(['Admitted', 'Not Admitted'])
     plt.show()
 
 def sigmoid(z):
