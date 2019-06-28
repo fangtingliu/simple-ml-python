@@ -1,6 +1,6 @@
-# MachineLearning_FLP
+# Simple-ML-Python
 
-MachineLearning_FLP is a Python module that includes common MachineLearning algorithms. They are implemented according to books and courses I have taken. Some of them include test with data provided by those books and courses. Sources are specified in the detailed described below. Thanks to all those sources.
+Simple-ML-Python is a Python module that includes common MachineLearning algorithms. They are implemented according to books and courses I have taken. Some of them include test with data provided by those books and courses. Sources are specified in the detailed described below. Thanks to all those sources.
 Courses:
 - 'Machine Learning by Standford University' courses by Andrew Ng, hosted by Coursera
 - Artificial Intelligence for Humans Volume 1: Fundamental Algorithms by Jeff Heaton
